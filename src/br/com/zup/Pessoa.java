@@ -1,4 +1,4 @@
 package br.com.zup;
 
-public class Cliente {
+public class Pessoa {
 }
