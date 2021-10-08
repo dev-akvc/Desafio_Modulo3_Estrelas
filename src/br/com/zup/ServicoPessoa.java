@@ -36,6 +36,19 @@ public class ServicoPessoa {
         }
     }
 
+    public static void validarEmailRepetido(String email) throws Exception {
+        for (Pessoa referenciaCliente : listaClientes) {
+            if (referenciaCliente.getEmail().equals(email)) {
+                throw new Exception("= Email já cadastrado na lista de clientes =");
+            }
+        }
+        for (Pessoa referenciaVendedor : listaVendedores) {
+            if (referenciaVendedor.getEmail().equals(email)) {
+                throw new Exception("= Email já cadastrado na lista de vendedores =");
+            }
+        }
+    }
+
 
 
 }
