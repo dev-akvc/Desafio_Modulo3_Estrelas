@@ -40,8 +40,16 @@ public class Pessoa {
         this.email = email;
     }
 
-    public TipoPessoa getTipoPessoa() {
-        return tipoPessoa;
+    public TipoPessoa getTipoPessoa(int opcao) throws Exception {
+        if (opcao == 1) {
+            System.out.println("Cliente");
+            return TipoPessoa.CLIENTE;
+        }
+        if (opcao == 2) {
+            System.out.println("Vendedor");
+            return TipoPessoa.VENDEDOR;
+        }
+        throw new Exception("* Opção inválida *");
     }
 
     public void setTipoPessoa(TipoPessoa tipoPessoa) {
@@ -49,12 +57,12 @@ public class Pessoa {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder dados = new StringBuilder();
-        dados.append(tipoPessoa);
-        dados.append("Nome: " +nome);
-        dados.append("CPF: " +cpf);
-        dados.append("E-mail: " +email);
+        dados.append(" * " + tipoPessoa.toString() + " * ");
+        dados.append("Nome: " + nome);
+        dados.append("CPF: " + cpf);
+        dados.append("E-mail: " + email);
         return dados.toString();
     }
 
