@@ -20,16 +20,22 @@ public class ServicoPessoa {
 
     public static void exibirPessoas(TipoPessoa tipo) {
         if (tipo == TipoPessoa.CLIENTE) {
-            for (Pessoa referenciaPessoa : listaClientes) {
-                System.out.println(referenciaPessoa);
+            for (Pessoa referenciaCliente : listaClientes) {
+                System.out.println(referenciaCliente);
             }
         } else {
-            for (Pessoa referenciaPessoa : listaVendedores) {
-                System.out.println(referenciaPessoa);
-
+            for (Pessoa referenciaVendedor : listaVendedores) {
+                System.out.println(referenciaVendedor);
             }
         }
     }
+
+    public static void validarEmailComArroba(String email) throws Exception {
+        if (!email.contains("@")) {
+            throw new Exception("= Email inválido =");
+        }
+    }
+
 
 
 }
