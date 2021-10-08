@@ -24,7 +24,16 @@ public class ServicoVenda {
                 return pesquisarVenda;
             }
         }
-        throw new Exception("= Nenhuma compra localizada neste CPF =");
+        throw new Exception("= Nenhuma compra deste cliente foi localizada =");
+    }
+
+    public static Venda pesquisarVendasPorEmail(String email) throws Exception {
+        for (Venda pesquisarVenda : listaVendas) {
+            if (pesquisarVenda.getVendedor().getEmail().equals(email)) {
+                return pesquisarVenda;
+            }
+        }
+        throw new Exception("= Nenhuma venda deste vendedor foi localizada =");
     }
 
 
