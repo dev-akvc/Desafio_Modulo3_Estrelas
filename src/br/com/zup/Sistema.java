@@ -10,8 +10,9 @@ public class Sistema {
 
     //menu inicial
     public static void menu() {
-        System.out.println("\t === Menu === ");
-        System.out.println("\t\tDigite: \n[1] para cadastrar cliente \n[2] para cadastrar vendedor \n[3] para cadastrar venda \n[4] para sair do Programa");
+        System.out.println(" === Chocolates Chocolatudos === ");
+        System.out.print("\t\tDigite: \n 1- Cadastrar cliente \n 2- Cadastrar vendedor \n 3- Cadastrar venda");
+        System.out.println("\n 4- Verificar compras \n 5- Verificar vendas \n 6- Sair do Menu");
     }
 
     public static Pessoa cadastrarPessoa(TipoPessoa tipo) throws Exception {
