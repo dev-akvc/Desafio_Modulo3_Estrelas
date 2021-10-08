@@ -8,7 +8,10 @@ public class ServicoPessoa {
     public static List<Pessoa> listaVendedores = new ArrayList<>();
     public static Pessoa pessoa;
 
-    public static Pessoa cadastrarPessoa(String nome, String cpf, String email, TipoPessoa tipoPessoa) {
+    public static Pessoa cadastrarPessoa(String nome, String cpf, String email, TipoPessoa tipoPessoa) throws Exception {
+        validarEmailComArroba(email);
+        validarEmailRepetido(email);
+        validarCpfRepetido(cpf);
         pessoa = new Pessoa(nome, cpf, email, tipoPessoa);
         if (tipoPessoa == TipoPessoa.CLIENTE) {
             listaClientes.add(pessoa);
