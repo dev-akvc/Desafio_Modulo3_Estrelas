@@ -12,5 +12,11 @@ public class ServicoPessoa {
         return pessoa;
     }
 
+    public static void exibirPessoas(){
+        for (Pessoa referenciaPessoa: listaPessoas) {
+            System.out.println(referenciaPessoa);
+        }
+    }
+
 
 }

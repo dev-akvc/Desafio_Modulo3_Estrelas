@@ -30,7 +30,7 @@ public class Sistema {
         return ServicoPessoa.cadastrarPessoa(nome, cpf, email, tipoPessoa);
     }
 
-    public static Venda cadastrarVendas() throws Exception {
+    public static Venda cadastrarVendas(){
         cadastrarCliente();
         cadastrarVendedor();
         double valorASerPago = dadosDeUsuario("Qual valor da venda? ").nextDouble();
@@ -38,6 +38,7 @@ public class Sistema {
 
         return ServicoVenda.cadastrarVendas(cadastrarCliente(), cadastrarVendedor(), valorASerPago, dataDeRegistro);
     }
+
 
 
 }

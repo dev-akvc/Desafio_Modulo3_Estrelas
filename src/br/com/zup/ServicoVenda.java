@@ -12,4 +12,12 @@ public class ServicoVenda {
         return venda;
     }
 
+    public static void exibirVendas(){
+        for (Venda referenciaVenda: listaVendas) {
+            System.out.println(referenciaVenda);
+        }
+    }
+
+
+
 }
