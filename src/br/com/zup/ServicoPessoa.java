@@ -49,6 +49,17 @@ public class ServicoPessoa {
         }
     }
 
-
+    public static void validarCpfRepetido(String cpf) throws Exception {
+        for (Pessoa referenciaCliente : listaClientes) {
+            if (referenciaCliente.getCpf().equals(cpf)) {
+                throw new Exception("= CPF já cadastrado na lista de clientes =");
+            }
+        }
+        for (Pessoa referenciaVendedor : listaVendedores) {
+            if (referenciaVendedor.getCpf().equals(cpf)) {
+                throw new Exception("= CPF já cadastrado na lista de vendedores =");
+            }
+        }
+    }
 
 }
