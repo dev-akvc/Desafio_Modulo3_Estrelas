@@ -1,26 +1,45 @@
 package br.com.zup;
 
 public class Venda {
-    private TipoPessoa pessoa;
+    private Pessoa cliente;
+    private Pessoa vendedor;
+    private TipoPessoa tipoPessoa;
     private double valorASerPago;
-    private String datDeRegistro;
+    private String dataDeRegistro;
 
     public Venda() {
     }
 
-    public Venda(Pessoa pessoa, double valorASerPago, String datDeRegistro) throws Exception {
-        this.pessoa = pessoa.getTipoPessoa(1);
-        this.pessoa = pessoa.getTipoPessoa(2);
+
+    public Venda(Pessoa cliente, Pessoa vendedor, double valorASerPago, String dataDeRegistro){
+        this.cliente = cliente;
+        this.vendedor = vendedor;
         this.valorASerPago = valorASerPago;
-        this.datDeRegistro = datDeRegistro;
+        this.dataDeRegistro = dataDeRegistro;
     }
 
-    public TipoPessoa getPessoa() {
-        return pessoa;
+    public Pessoa getCliente() {
+        return cliente;
     }
 
-    public void setPessoa(TipoPessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setCliente(Pessoa cliente) {
+        this.cliente = cliente;
+    }
+
+    public Pessoa getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Pessoa vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public TipoPessoa getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoa tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 
     public double getValorASerPago() {
@@ -31,21 +50,22 @@ public class Venda {
         this.valorASerPago = valorASerPago;
     }
 
-    public String getDatDeRegistro() {
-        return datDeRegistro;
+    public String getDataDeRegistro() {
+        return dataDeRegistro;
     }
 
-    public void setDatDeRegistro(String datDeRegistro) {
-        this.datDeRegistro = datDeRegistro;
+    public void setDataDeRegistro(String dataDeRegistro) {
+        this.dataDeRegistro = dataDeRegistro;
     }
 
     @Override
     public String toString(){
         StringBuilder dados = new StringBuilder();
         dados.append("\n == Registro de venda ==");
-        dados.append("\n" + pessoa);
+        dados.append("\n" + cliente);
+        dados.append("\n" + vendedor);
         dados.append("\nValor: " +valorASerPago);
-        dados.append("\nData da venda: " +datDeRegistro);
+        dados.append("\nData da venda: " +dataDeRegistro);
         return dados.toString();
     }
 }

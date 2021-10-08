@@ -9,17 +9,17 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String cpf, String email) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-    }
-
     public Pessoa(String nome, String cpf, String email, TipoPessoa tipoPessoa) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.tipoPessoa = tipoPessoa;
+    }
+
+    public Pessoa(String nome, String cpf, String email) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
     }
 
     public String getNome() {

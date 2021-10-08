@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Sistema.menu();
-        Sistema.cadastrarCliente();
-        Sistema.cadastrarVendedor();
+        ServicoVenda.cadastrarVendas(Sistema.cadastrarCliente(), Sistema.cadastrarVendedor(),1000,"2/2");
+
     }
 }
