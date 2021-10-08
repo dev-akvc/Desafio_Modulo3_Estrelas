@@ -10,7 +10,6 @@ public class Venda {
     public Venda() {
     }
 
-
     public Venda(Pessoa cliente, Pessoa vendedor, double valorASerPago, String dataDeRegistro){
         this.cliente = cliente;
         this.vendedor = vendedor;
