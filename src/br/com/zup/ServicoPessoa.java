@@ -7,7 +7,7 @@ public class ServicoPessoa {
     public static List<Pessoa> listaPessoas = new ArrayList<>();
 
     public static Pessoa cadastrarPessoa(String nome, String cpf, String email, TipoPessoa tipoPessoa) {
-        Pessoa pessoa = new Pessoa();
+        Pessoa pessoa = new Pessoa(nome, cpf, email, tipoPessoa);
         listaPessoas.add(pessoa);
         return pessoa;
     }

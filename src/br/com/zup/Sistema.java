@@ -30,15 +30,12 @@ public class Sistema {
         return ServicoPessoa.cadastrarPessoa(nome, cpf, email, tipoPessoa);
     }
 
-    public static Venda cadastrarVendas(){
-        cadastrarCliente();
-        cadastrarVendedor();
+    public static Venda cadastrarVendas() {
         double valorASerPago = dadosDeUsuario("Qual valor da venda? ").nextDouble();
         String dataDeRegistro = dadosDeUsuario("Qual data da venda? ").nextLine();
 
         return ServicoVenda.cadastrarVendas(cadastrarCliente(), cadastrarVendedor(), valorASerPago, dataDeRegistro);
     }
-
 
 
 }
