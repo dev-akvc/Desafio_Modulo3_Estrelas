@@ -1,24 +1,25 @@
 package br.com.zup;
 
 public class Venda {
-    private Pessoa pessoa;
+    private TipoPessoa pessoa;
     private double valorASerPago;
     private String datDeRegistro;
 
     public Venda() {
     }
 
-    public Venda(Pessoa pessoa, double valorASerPago, String datDeRegistro) {
-        this.pessoa = pessoa;
+    public Venda(Pessoa pessoa, double valorASerPago, String datDeRegistro) throws Exception {
+        this.pessoa = pessoa.getTipoPessoa(1);
+        this.pessoa = pessoa.getTipoPessoa(2);
         this.valorASerPago = valorASerPago;
         this.datDeRegistro = datDeRegistro;
     }
 
-    public Pessoa getPessoa() {
+    public TipoPessoa getPessoa() {
         return pessoa;
     }
 
-    public void setPessoa(Pessoa pessoa) {
+    public void setPessoa(TipoPessoa pessoa) {
         this.pessoa = pessoa;
     }
 
