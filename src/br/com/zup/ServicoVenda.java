@@ -12,12 +12,20 @@ public class ServicoVenda {
         return venda;
     }
 
-    public static void exibirVendas(){
-        for (Venda referenciaVenda: listaVendas) {
+    public static void exibirVendas() {
+        for (Venda referenciaVenda : listaVendas) {
             System.out.println(referenciaVenda);
         }
     }
 
+    public static Venda pesquisarComprasPorCpf(String cpf) throws Exception {
+        for (Venda pesquisarVenda : listaVendas) {
+            if (pesquisarVenda.getCliente().getCpf().equals(cpf)) {
+                return pesquisarVenda;
+            }
+        }
+        throw new Exception("= Nenhuma compra localizada neste CPF =");
+    }
 
 
 }
