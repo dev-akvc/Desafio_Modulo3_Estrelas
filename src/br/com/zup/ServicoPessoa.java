@@ -21,17 +21,22 @@ public class ServicoPessoa {
         return pessoa;
     }
 
-    public static Pessoa buscarPessoas(TipoPessoa tipo) throws Exception {
-        if (tipo == TipoPessoa.CLIENTE) {
-            for (Pessoa referenciaCliente : listaClientes) {
+    public static Pessoa buscarCliente(String cpf) throws Exception {
+        for (Pessoa referenciaCliente : listaClientes) {
+            if (referenciaCliente.getCpf().equals(cpf)) {
                 return referenciaCliente;
             }
-        } else {
-            for (Pessoa referenciaVendedor : listaVendedores) {
+        }
+        throw new Exception(" = Cliente não localizado = ");
+    }
+
+    public static Pessoa buscarVendedor(String email) throws Exception {
+        for (Pessoa referenciaVendedor : listaVendedores) {
+            if (referenciaVendedor.getEmail().equalsIgnoreCase(email)) {
                 return referenciaVendedor;
             }
         }
-        throw new Exception(" Não localizado cliente/ vendedor ");
+        throw new Exception(" = Vendedor não localizado = ");
     }
 
     public static void exibirPessoas(TipoPessoa tipo) {

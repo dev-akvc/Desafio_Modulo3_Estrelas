@@ -16,11 +16,11 @@ public class Sistema {
                 "\n 4- Histórico de cadastros \n 5- Histórico de transações  \n 0- Sair do Menu");
     }
 
-    public static String menuTransacoes(){
+    public static String menuTransacoes() {
         return "Digite: \n 1- Buscar compras por cliente \n 2- Buscar vendas por vendedor \n 3- Exibir todas as vendas";
     }
 
-    public static String menuCadastros(){
+    public static String menuCadastros() {
         return "Digite: \n 1- Exibir clientes cadastrados \n 2- Exibir vendedores cadastrados";
     }
 

@@ -7,9 +7,9 @@ public class ServicoVenda {
     private static List<Venda> listaVendas = new ArrayList<>();
 
     public static Venda cadastrarVendas(String cpfCliente, String emailVendedor, double valorASerPago, String dataDeRegistro) throws Exception {
-        cpfCliente = ServicoPessoa.buscarPessoas(TipoPessoa.CLIENTE).getCpf();
-        emailVendedor = ServicoPessoa.buscarPessoas(TipoPessoa.VENDEDOR).getEmail();
-        Venda venda = new Venda(cpfCliente, emailVendedor, valorASerPago, dataDeRegistro);
+        Pessoa cliente = ServicoPessoa.buscarCliente(cpfCliente);
+        Pessoa vendedor = ServicoPessoa.buscarVendedor(emailVendedor);
+        Venda venda = new Venda(cliente, vendedor, valorASerPago, dataDeRegistro);
         listaVendas.add(venda);
         return venda;
     }
@@ -29,8 +29,8 @@ public class ServicoVenda {
         List<Venda> comprasPorCpf = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getCliente().getCpf().equals(cpf)) {
+                System.out.println(pesquisarVenda);
                 comprasPorCpf.add(pesquisarVenda);
-                return comprasPorCpf;
             }
         }
         throw new Exception(" = Não há compras nesse CPF = ");
@@ -40,8 +40,8 @@ public class ServicoVenda {
         List<Venda> vendasPorEmail = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getVendedor().getEmail().equals(email)) {
+                System.out.println(pesquisarVenda);
                 vendasPorEmail.add(pesquisarVenda);
-                return vendasPorEmail;
             }
         }
         throw new Exception(" = Não há vendas cadastradas nesse email = ");

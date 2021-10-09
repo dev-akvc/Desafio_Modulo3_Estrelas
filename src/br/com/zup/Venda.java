@@ -62,10 +62,10 @@ public class Venda {
     @Override
     public String toString(){
         StringBuilder dados = new StringBuilder();
-        dados.append("\n == Registros ==");
+        dados.append("\n == VENDA ==");
         dados.append("\n" + cliente);
         dados.append("\n" + vendedor);
-        dados.append("\n = VENDA =");
+        dados.append("\n = DADOS =");
         dados.append("\nValor: " +valorASerPago);
         dados.append("\nData da venda: " +dataDeRegistro);
         return dados.toString();
