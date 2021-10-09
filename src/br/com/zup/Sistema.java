@@ -1,5 +1,6 @@
 package br.com.zup;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {
@@ -16,7 +17,6 @@ public class Sistema {
     }
 
     public static Pessoa cadastrarPessoa(TipoPessoa tipo) throws Exception {
-
         String nome = dadosDeUsuario(tipo == TipoPessoa.CLIENTE ? "Qual nome do cliente?" : "Qual nome do vendedor?").nextLine();
         String cpf = dadosDeUsuario(tipo == TipoPessoa.CLIENTE ? "Qual CPF do cliente?" : "Qual CPF do vendedor?").nextLine();
         String email = dadosDeUsuario(tipo == TipoPessoa.CLIENTE ? "Qual email do cliente?" : "Qual email do vendedor?").nextLine();
@@ -26,7 +26,21 @@ public class Sistema {
     public static Venda cadastrarVendas() throws Exception {
         double valorASerPago = dadosDeUsuario("Qual valor da venda? ").nextDouble();
         String dataDeRegistro = dadosDeUsuario("Qual data da venda? ").nextLine();
-        return ServicoVenda.cadastrarVendas(cadastrarPessoa(TipoPessoa.CLIENTE),cadastrarPessoa(TipoPessoa.VENDEDOR) ,valorASerPago, dataDeRegistro);
+        return ServicoVenda.cadastrarVendas(cadastrarPessoa(TipoPessoa.CLIENTE), cadastrarPessoa(TipoPessoa.VENDEDOR), valorASerPago, dataDeRegistro);
+    }
+
+    public static List<Venda> pesquisarComprasPorCpf() throws Exception {
+        String cpf = dadosDeUsuario("Qual CPF do cliente?").nextLine();
+        List<Venda> pesquisarComprasPorCpf = ServicoVenda.pesquisarComprasPorCpf(cpf);
+        System.out.println("O cliente tem " + pesquisarComprasPorCpf.size() + " compras");
+        return pesquisarComprasPorCpf;
+    }
+
+    public static List<Venda> pesquisarVendasPorEmail() throws Exception {
+        String email = dadosDeUsuario("Qual email do vendedor?").nextLine();
+        List<Venda> pesquisarVendasPorEmail = ServicoVenda.pesquisarVendasPorEmail(email);
+        System.out.println("O vendedor tem " + pesquisarVendasPorEmail.size() + " vendas");
+        return pesquisarVendasPorEmail;
     }
 
 

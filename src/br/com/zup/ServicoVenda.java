@@ -7,8 +7,6 @@ public class ServicoVenda {
     private static List<Venda> listaVendas = new ArrayList<>();
 
     public static Venda cadastrarVendas(Pessoa cliente, Pessoa vendedor, double valorASerPago, String dataDeRegistro) throws Exception {
-//        Pessoa pessoa = ServicoVenda.pesquisarVendasPorEmail(vendedor.getEmail());
-
         Venda venda = new Venda(cliente, vendedor, valorASerPago, dataDeRegistro);
         listaVendas.add(venda);
         return venda;
@@ -20,23 +18,33 @@ public class ServicoVenda {
         }
     }
 
-    public static Venda pesquisarComprasPorCpf(String cpf) throws Exception {
+    public static List<Venda> pesquisarComprasPorCpf(String cpf) throws Exception {
+        List<Venda> comprasPorCpf = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getCliente().getCpf().equals(cpf)) {
-                return pesquisarVenda;
+                comprasPorCpf.add(pesquisarVenda);
             }
         }
         throw new Exception("= Nenhuma compra deste cliente foi localizada =");
     }
 
-    public static Venda pesquisarVendasPorEmail(String email) throws Exception {
+    public static List<Venda> pesquisarVendasPorEmail(String email) throws Exception {
+        List<Venda> vendasPorEmail = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getVendedor().getEmail().equals(email)) {
-                return pesquisarVenda;
+                vendasPorEmail.add(pesquisarVenda);
             }
         }
         throw new Exception("= Nenhuma venda deste vendedor foi localizada =");
     }
 
+//    public static Venda pesquisarVendasPorEmail(String email) throws Exception {
+//        for (Venda pesquisarVenda : listaVendas) {
+//            if (pesquisarVenda.getVendedor().getEmail().equals(email)) {
+//                return pesquisarVenda;
+//            }
+//        }
+//        throw new Exception("= Nenhuma venda deste vendedor foi localizada =");
+//    }
 
 }
