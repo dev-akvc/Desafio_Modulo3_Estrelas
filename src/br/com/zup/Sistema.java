@@ -43,14 +43,12 @@ public class Sistema {
     public static List<Venda> pesquisarComprasPorCpf() throws Exception {
         String cpf = dadosDeUsuario("Qual CPF do cliente?").nextLine();
         List<Venda> pesquisarComprasPorCpf = ServicoVenda.pesquisarComprasPorCpf(cpf);
-        System.out.println("O cliente tem " + pesquisarComprasPorCpf.size() + " compras");
         return pesquisarComprasPorCpf;
     }
 
     public static List<Venda> pesquisarVendasPorEmail() throws Exception {
         String email = dadosDeUsuario("Qual email do vendedor?").nextLine();
         List<Venda> pesquisarVendasPorEmail = ServicoVenda.pesquisarVendasPorEmail(email);
-        System.out.println("O vendedor tem " + pesquisarVendasPorEmail.size() + " vendas");
         return pesquisarVendasPorEmail;
     }
 
@@ -64,13 +62,13 @@ public class Sistema {
             switch (opcaoEscolhida) {
 
                 case 1:
-                    Pessoa pessoa = cadastrarPessoa(TipoPessoa.CLIENTE);
-                    System.out.println(" = Cliente cadastrado = \n" + pessoa);
+                    Pessoa cliente = cadastrarPessoa(TipoPessoa.CLIENTE);
+                    System.out.println(" = Cliente cadastrado = \n" + cliente);
                     break;
 
                 case 2:
-                    pessoa = cadastrarPessoa(TipoPessoa.VENDEDOR);
-                    System.out.println(" = Vendedor cadastrado = \n" + pessoa);
+                    Pessoa vendedor = cadastrarPessoa(TipoPessoa.VENDEDOR);
+                    System.out.println(" = Vendedor cadastrado = \n" + vendedor);
                     break;
 
                 case 3:
@@ -93,12 +91,10 @@ public class Sistema {
                 case 5:
                     int opcaoTransacoes = dadosDeUsuario(menuTransacoes()).nextInt();
                     if (opcaoTransacoes == 1) {
-                        String cpfCliente = dadosDeUsuario("Qual CPF do cliente?").nextLine();
-                        ServicoVenda.pesquisarComprasPorCpf(cpfCliente);
+                        pesquisarComprasPorCpf();
                     }
                     if (opcaoTransacoes == 2) {
-                        String emailVendedor = dadosDeUsuario("Qual email do vendedor?").nextLine();
-                        ServicoVenda.pesquisarVendasPorEmail(emailVendedor);
+                        pesquisarVendasPorEmail();
                     }
                     if (opcaoTransacoes == 3) {
                         ServicoVenda.exibirVendas();

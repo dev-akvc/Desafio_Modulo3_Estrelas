@@ -7,7 +7,7 @@ public class Main {
 
         while (tentarNovamente) {
             try {
-                Sistema.executar();
+                tentarNovamente = Sistema.executar();
             } catch (Exception erro) {
                 System.out.println(erro.getMessage());
             }
