@@ -40,18 +40,6 @@ public class Sistema {
         return ServicoVenda.cadastrarVendas(cpfCliente, emailVendedor, valorASerPago, dataDeRegistro);
     }
 
-    public static List<Venda> pesquisarComprasPorCpf() throws Exception {
-        String cpf = dadosDeUsuario("Qual CPF do cliente?").nextLine();
-        List<Venda> pesquisarComprasPorCpf = ServicoVenda.pesquisarComprasPorCpf(cpf);
-        return pesquisarComprasPorCpf;
-    }
-
-    public static List<Venda> pesquisarVendasPorEmail() throws Exception {
-        String email = dadosDeUsuario("Qual email do vendedor?").nextLine();
-        List<Venda> pesquisarVendasPorEmail = ServicoVenda.pesquisarVendasPorEmail(email);
-        return pesquisarVendasPorEmail;
-    }
-
     public static boolean executar() throws Exception {
         boolean executarMenu = true;
 
@@ -78,10 +66,11 @@ public class Sistema {
 
                 case 4:
                     int opcaoLista = dadosDeUsuario(menuCadastros()).nextInt();
+
                     if (opcaoLista == 1) {
                         ServicoPessoa.exibirPessoas(TipoPessoa.CLIENTE);
                     }
-                    if (opcaoLista == 2) {
+                    else if (opcaoLista == 2) {
                         ServicoPessoa.exibirPessoas(TipoPessoa.VENDEDOR);
                     } else {
                         System.out.println("Digite opção válida");
@@ -90,13 +79,16 @@ public class Sistema {
 
                 case 5:
                     int opcaoTransacoes = dadosDeUsuario(menuTransacoes()).nextInt();
+
                     if (opcaoTransacoes == 1) {
-                        pesquisarComprasPorCpf();
+                        String cpf = dadosDeUsuario("Qual CPF do cliente?").nextLine();
+                        ServicoVenda.pesquisarComprasPorCpf(cpf);
                     }
-                    if (opcaoTransacoes == 2) {
-                        pesquisarVendasPorEmail();
+                    else if (opcaoTransacoes == 2) {
+                        String email = dadosDeUsuario("Qual email do vendedor?").nextLine();
+                        ServicoVenda.pesquisarVendasPorEmail(email);
                     }
-                    if (opcaoTransacoes == 3) {
+                    else if (opcaoTransacoes == 3) {
                         ServicoVenda.exibirVendas();
                     } else {
                         System.out.println("Digite opção válida");

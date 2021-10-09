@@ -25,7 +25,7 @@ public class ServicoVenda {
         }
     }
 
-    public static List<Venda> pesquisarComprasPorCpf(String cpf) throws Exception {
+    public static void pesquisarComprasPorCpf(String cpf) throws Exception {
         List<Venda> comprasPorCpf = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getCliente().getCpf().equals(cpf)) {
@@ -33,17 +33,21 @@ public class ServicoVenda {
                 comprasPorCpf.add(pesquisarVenda);
             }
         }
-        throw new Exception(" = Não há compras nesse CPF = ");
+        if (comprasPorCpf.size() == 0) {
+            throw new Exception(" = Não há compras nesse CPF = ");
+        }
     }
 
-    public static List<Venda> pesquisarVendasPorEmail(String email) throws Exception {
+    public static void pesquisarVendasPorEmail(String email) throws Exception {
         List<Venda> vendasPorEmail = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
-            if (pesquisarVenda.getVendedor().getEmail().equals(email)) {
+            if (pesquisarVenda.getVendedor().getEmail().equalsIgnoreCase(email)) {
                 System.out.println(pesquisarVenda);
                 vendasPorEmail.add(pesquisarVenda);
             }
         }
-        throw new Exception(" = Não há vendas cadastradas nesse email = ");
+        if (vendasPorEmail.size() == 0) {
+            throw new Exception(" = Não há vendas cadastradas nesse email = ");
+        }
     }
 }

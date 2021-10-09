@@ -10,8 +10,7 @@ public class ServicoPessoa {
 
     public static Pessoa cadastrarPessoa(String nome, String cpf, String email, TipoPessoa tipoPessoa) throws Exception {
         validarEmailComArroba(email);
-        validarEmailRepetido(email);
-        validarCpfRepetido(cpf);
+        validarCadastroRepetido(email, cpf);
         pessoa = new Pessoa(nome, cpf, email, tipoPessoa);
         if (tipoPessoa == TipoPessoa.CLIENTE) {
             listaClientes.add(pessoa);
@@ -63,32 +62,19 @@ public class ServicoPessoa {
 
     public static void validarEmailComArroba(String email) throws Exception {
         if (!email.contains("@")) {
-            throw new Exception("= Email inválido =");
+            throw new Exception(" = Email inválido = ");
         }
     }
 
-    public static void validarEmailRepetido(String email) throws Exception {
+    public static void validarCadastroRepetido(String email, String cpf) throws Exception {
         for (Pessoa referenciaCliente : listaClientes) {
-            if (referenciaCliente.getEmail().equalsIgnoreCase(email)) {
-                throw new Exception("= Email já cadastrado na lista de clientes =");
+            if (referenciaCliente.getEmail().equalsIgnoreCase(email) | referenciaCliente.getCpf().equals(cpf)) {
+                throw new Exception(" = Cliente já cadastrado = ");
             }
         }
         for (Pessoa referenciaVendedor : listaVendedores) {
-            if (referenciaVendedor.getEmail().equalsIgnoreCase(email)) {
-                throw new Exception("= Email já cadastrado na lista de vendedores =");
-            }
-        }
-    }
-
-    public static void validarCpfRepetido(String cpf) throws Exception {
-        for (Pessoa referenciaCliente : listaClientes) {
-            if (referenciaCliente.getCpf().equals(cpf)) {
-                throw new Exception("= CPF já cadastrado na lista de clientes =");
-            }
-        }
-        for (Pessoa referenciaVendedor : listaVendedores) {
-            if (referenciaVendedor.getCpf().equals(cpf)) {
-                throw new Exception("= CPF já cadastrado na lista de vendedores =");
+            if (referenciaVendedor.getEmail().equalsIgnoreCase(email)| referenciaVendedor.getCpf().equals(cpf)) {
+                throw new Exception(" = Vendedor já cadastrado = ");
             }
         }
     }
