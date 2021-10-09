@@ -43,8 +43,45 @@ public class Sistema {
         return pesquisarVendasPorEmail;
     }
 
+    public static void executar() throws Exception {
+        boolean executarMenu = true;
 
+        while (executarMenu) {
+            menu();
 
+            int opcaoEscolhida = dadosDeUsuario("O que gostaria de fazer?").nextInt();
+            switch (opcaoEscolhida) {
 
+                case 1:
+                    Pessoa pessoa = cadastrarPessoa(TipoPessoa.CLIENTE);
+                    System.out.println(" = Cliente cadastrado = \n" + pessoa);
+                    break;
 
+                case 2:
+                    pessoa = cadastrarPessoa(TipoPessoa.VENDEDOR);
+                    System.out.println(" = Vendedor cadastrado = \n" + pessoa);
+                    break;
+
+                case 3:
+                    Venda venda = cadastrarVendas();
+                    System.out.println(" = Venda cadastrada = \n" + venda);
+                    break;
+
+                case 4:
+                    List<Venda> compras = pesquisarComprasPorCpf();
+                    System.out.println(compras);
+                    break;
+
+                case 5:
+                    List<Venda> vendas = pesquisarVendasPorEmail();
+                    System.out.println(vendas);
+                    break;
+
+                case 6:
+                    System.out.println("= Bye =");
+                    executarMenu = false;
+                    break;
+            }
+        }
+    }
 }
