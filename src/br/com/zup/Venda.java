@@ -63,7 +63,7 @@ public class Venda {
         dados.append("\n == Registros ==");
         dados.append("\n" + cliente);
         dados.append("\n" + vendedor);
-        dados.append("\n\n = VENDA =");
+        dados.append("\n = VENDA =");
         dados.append("\nValor: " +valorASerPago);
         dados.append("\nData da venda: " +dataDeRegistro);
         return dados.toString();

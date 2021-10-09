@@ -13,38 +13,34 @@ public class ServicoVenda {
     }
 
     public static void exibirVendas() {
-        for (Venda referenciaVenda : listaVendas) {
-            System.out.println(referenciaVenda);
+        if (listaVendas.size() == 0) {
+            System.out.println(" = Não há registro de vendas = ");
+        } else {
+
+            for (Venda referenciaVenda : listaVendas) {
+                System.out.println("Estão cadstradas " +listaVendas.size() +" vendas\n" +referenciaVenda);
+            }
         }
     }
 
-    public static List<Venda> pesquisarComprasPorCpf(String cpf) throws Exception {
+    public static List<Venda> pesquisarComprasPorCpf(String cpf) {
         List<Venda> comprasPorCpf = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getCliente().getCpf().equals(cpf)) {
                 comprasPorCpf.add(pesquisarVenda);
             }
         }
-        throw new Exception("= Nenhuma compra deste cliente foi localizada =");
+        return comprasPorCpf;
     }
 
-    public static List<Venda> pesquisarVendasPorEmail(String email) throws Exception {
+    public static List<Venda> pesquisarVendasPorEmail(String email) {
         List<Venda> vendasPorEmail = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getVendedor().getEmail().equals(email)) {
                 vendasPorEmail.add(pesquisarVenda);
             }
         }
-        throw new Exception("= Nenhuma venda deste vendedor foi localizada =");
+        return vendasPorEmail;
     }
-
-//    public static Venda pesquisarVendasPorEmail(String email) throws Exception {
-//        for (Venda pesquisarVenda : listaVendas) {
-//            if (pesquisarVenda.getVendedor().getEmail().equals(email)) {
-//                return pesquisarVenda;
-//            }
-//        }
-//        throw new Exception("= Nenhuma venda deste vendedor foi localizada =");
-//    }
 
 }

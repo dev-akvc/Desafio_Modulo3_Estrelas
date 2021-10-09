@@ -43,7 +43,7 @@ public class Sistema {
         return pesquisarVendasPorEmail;
     }
 
-    public static void executar() throws Exception {
+    public static boolean executar() throws Exception {
         boolean executarMenu = true;
 
         while (executarMenu) {
@@ -63,8 +63,8 @@ public class Sistema {
                     break;
 
                 case 3:
-                    Venda venda = cadastrarVendas();
-                    System.out.println(" = Venda cadastrada = \n" + venda);
+                    cadastrarVendas();
+                    ServicoVenda.exibirVendas();
                     break;
 
                 case 4:
@@ -83,5 +83,6 @@ public class Sistema {
                     break;
             }
         }
+        return executarMenu;
     }
 }

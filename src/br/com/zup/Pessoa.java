@@ -65,7 +65,7 @@ public class Pessoa {
     @Override
     public String toString() {
         StringBuilder dados = new StringBuilder();
-        dados.append("\n = " + tipoPessoa.toString() + " = ");
+        dados.append(" = " + tipoPessoa.toString() + " = ");
         dados.append("\nNome: " + nome);
         dados.append("\nCPF: " + cpf);
         dados.append("\nE-mail: " + email);
