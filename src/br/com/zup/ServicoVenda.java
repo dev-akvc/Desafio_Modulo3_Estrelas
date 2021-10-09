@@ -25,24 +25,25 @@ public class ServicoVenda {
         }
     }
 
-    public static List<Venda> pesquisarComprasPorCpf(String cpf) {
+    public static List<Venda> pesquisarComprasPorCpf(String cpf) throws Exception {
         List<Venda> comprasPorCpf = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getCliente().getCpf().equals(cpf)) {
                 comprasPorCpf.add(pesquisarVenda);
+                return comprasPorCpf;
             }
         }
-        return comprasPorCpf;
+        throw new Exception(" = Não há compras nesse CPF = ");
     }
 
-    public static List<Venda> pesquisarVendasPorEmail(String email) {
+    public static List<Venda> pesquisarVendasPorEmail(String email) throws Exception {
         List<Venda> vendasPorEmail = new ArrayList<>();
         for (Venda pesquisarVenda : listaVendas) {
             if (pesquisarVenda.getVendedor().getEmail().equals(email)) {
                 vendasPorEmail.add(pesquisarVenda);
+                return vendasPorEmail;
             }
         }
-        return vendasPorEmail;
+        throw new Exception(" = Não há vendas cadastradas nesse email = ");
     }
-
 }

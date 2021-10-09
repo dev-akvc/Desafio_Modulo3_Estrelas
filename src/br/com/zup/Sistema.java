@@ -16,6 +16,14 @@ public class Sistema {
                 "\n 4- Histórico de cadastros \n 5- Histórico de transações  \n 0- Sair do Menu");
     }
 
+    public static String menuTransacoes(){
+        return "Digite: \n 1- Buscar compras por cliente \n 2- Buscar vendas por vendedor \n 3- Exibir todas as vendas";
+    }
+
+    public static String menuCadastros(){
+        return "Digite: \n 1- Exibir clientes cadastrados \n 2- Exibir vendedores cadastrados";
+    }
+
 
     public static Pessoa cadastrarPessoa(TipoPessoa tipo) throws Exception {
         String nome = dadosDeUsuario(tipo == TipoPessoa.CLIENTE ? "Qual nome do cliente?" : "Qual nome do vendedor?").nextLine();
@@ -71,7 +79,7 @@ public class Sistema {
                     break;
 
                 case 4:
-                    int opcaoLista = dadosDeUsuario("Digite: \n 1- Exibir clientes cadastrados \n 2- Exibir vendedores cadastrados").nextInt();
+                    int opcaoLista = dadosDeUsuario(menuCadastros()).nextInt();
                     if (opcaoLista == 1) {
                         ServicoPessoa.exibirPessoas(TipoPessoa.CLIENTE);
                     }
@@ -83,8 +91,7 @@ public class Sistema {
                     break;
 
                 case 5:
-                    int opcaoTransacoes = dadosDeUsuario("Digite: \n 1- Buscar compras por cliente " +
-                            "\n 2- Buscar vendas por vendedor \n 3- Exibir todas as vendas").nextInt();
+                    int opcaoTransacoes = dadosDeUsuario(menuTransacoes()).nextInt();
                     if (opcaoTransacoes == 1) {
                         String cpfCliente = dadosDeUsuario("Qual CPF do cliente?").nextLine();
                         ServicoVenda.pesquisarComprasPorCpf(cpfCliente);
