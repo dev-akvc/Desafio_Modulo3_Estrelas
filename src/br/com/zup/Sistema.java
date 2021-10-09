@@ -12,9 +12,10 @@ public class Sistema {
     //menu inicial
     public static void menu() {
         System.out.println(" === Chocolates Chocolatudos === ");
-        System.out.print("\t\tDigite: \n 1- Cadastrar cliente \n 2- Cadastrar vendedor \n 3- Cadastrar venda");
-        System.out.println("\n 4- Verificar compras \n 5- Verificar vendas \n 6- Sair do Menu");
+        System.out.println("\t\tDigite: \n 1- Cadastrar cliente \n 2- Cadastrar vendedor \n 3- Cadastrar venda " +
+                "\n 4- Histórico de cadastros \n 5- Histórico de transações  \n 0- Sair do Menu");
     }
+
 
     public static Pessoa cadastrarPessoa(TipoPessoa tipo) throws Exception {
         String nome = dadosDeUsuario(tipo == TipoPessoa.CLIENTE ? "Qual nome do cliente?" : "Qual nome do vendedor?").nextLine();
@@ -70,16 +71,36 @@ public class Sistema {
                     break;
 
                 case 4:
-                    List<Venda> compras = pesquisarComprasPorCpf();
-                    System.out.println(compras);
+                    int opcaoLista = dadosDeUsuario("Digite: \n 1- Exibir clientes cadastrados \n 2- Exibir vendedores cadastrados").nextInt();
+                    if (opcaoLista == 1) {
+                        ServicoPessoa.exibirPessoas(TipoPessoa.CLIENTE);
+                    }
+                    if (opcaoLista == 2) {
+                        ServicoPessoa.exibirPessoas(TipoPessoa.VENDEDOR);
+                    } else {
+                        System.out.println("Digite opção válida");
+                    }
                     break;
 
                 case 5:
-                    List<Venda> vendas = pesquisarVendasPorEmail();
-                    System.out.println(vendas);
+                    int opcaoTransacoes = dadosDeUsuario("Digite: \n 1- Buscar compras por cliente " +
+                            "\n 2- Buscar vendas por vendedor \n 3- Exibir todas as vendas").nextInt();
+                    if (opcaoTransacoes == 1) {
+                        String cpfCliente = dadosDeUsuario("Qual CPF do cliente?").nextLine();
+                        ServicoVenda.pesquisarComprasPorCpf(cpfCliente);
+                    }
+                    if (opcaoTransacoes == 2) {
+                        String emailVendedor = dadosDeUsuario("Qual email do vendedor?").nextLine();
+                        ServicoVenda.pesquisarVendasPorEmail(emailVendedor);
+                    }
+                    if (opcaoTransacoes == 3) {
+                        ServicoVenda.exibirVendas();
+                    } else {
+                        System.out.println("Digite opção válida");
+                    }
                     break;
 
-                case 6:
+                case 0:
                     System.out.println("= Bye =");
                     executarMenu = false;
                     break;
