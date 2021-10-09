@@ -24,9 +24,11 @@ public class Sistema {
     }
 
     public static Venda cadastrarVendas() throws Exception {
+        String cpfCliente = dadosDeUsuario("Qual CPF do cliente?").nextLine();
+        String emailVendedor = dadosDeUsuario("Qual email do vendedor?").nextLine();
         double valorASerPago = dadosDeUsuario("Qual valor da venda? ").nextDouble();
         String dataDeRegistro = dadosDeUsuario("Qual data da venda? ").nextLine();
-        return ServicoVenda.cadastrarVendas(cadastrarPessoa(TipoPessoa.CLIENTE), cadastrarPessoa(TipoPessoa.VENDEDOR), valorASerPago, dataDeRegistro);
+        return ServicoVenda.cadastrarVendas(cpfCliente, emailVendedor, valorASerPago, dataDeRegistro);
     }
 
     public static List<Venda> pesquisarComprasPorCpf() throws Exception {

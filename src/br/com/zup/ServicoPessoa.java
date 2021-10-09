@@ -21,17 +21,40 @@ public class ServicoPessoa {
         return pessoa;
     }
 
-    public static void exibirPessoas(TipoPessoa tipo) {
+    public static Pessoa buscarPessoas(TipoPessoa tipo) throws Exception {
         if (tipo == TipoPessoa.CLIENTE) {
             for (Pessoa referenciaCliente : listaClientes) {
-                System.out.println(referenciaCliente);
+                return referenciaCliente;
             }
         } else {
             for (Pessoa referenciaVendedor : listaVendedores) {
-                System.out.println(referenciaVendedor);
+                return referenciaVendedor;
+            }
+        }
+        throw new Exception(" Não localizado cliente/ vendedor ");
+    }
+
+    public static void exibirPessoas(TipoPessoa tipo) {
+        if (tipo == TipoPessoa.CLIENTE) {
+            if (listaClientes.size() == 0) {
+                System.out.println(" = Não há clientes na lista = ");
+            } else {
+                for (Pessoa referenciaCliente : listaClientes) {
+                    System.out.println(referenciaCliente);
+                }
+            }
+        }
+        if (tipo == TipoPessoa.VENDEDOR) {
+            if (listaVendedores.size() == 0) {
+                System.out.println(" = Não há vendedores na lista = ");
+            } else {
+                for (Pessoa referenciaVendedor : listaVendedores) {
+                    System.out.println(referenciaVendedor);
+                }
             }
         }
     }
+
 
     public static void validarEmailComArroba(String email) throws Exception {
         if (!email.contains("@")) {
@@ -41,12 +64,12 @@ public class ServicoPessoa {
 
     public static void validarEmailRepetido(String email) throws Exception {
         for (Pessoa referenciaCliente : listaClientes) {
-            if (referenciaCliente.getEmail().equals(email)) {
+            if (referenciaCliente.getEmail().equalsIgnoreCase(email)) {
                 throw new Exception("= Email já cadastrado na lista de clientes =");
             }
         }
         for (Pessoa referenciaVendedor : listaVendedores) {
-            if (referenciaVendedor.getEmail().equals(email)) {
+            if (referenciaVendedor.getEmail().equalsIgnoreCase(email)) {
                 throw new Exception("= Email já cadastrado na lista de vendedores =");
             }
         }

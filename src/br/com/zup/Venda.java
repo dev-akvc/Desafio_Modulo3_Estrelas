@@ -7,7 +7,7 @@ public class Venda {
     private double valorASerPago;
     private String dataDeRegistro;
 
-    public Venda() {
+    public Venda(String cpfCliente, String emailVendedor, double valorASerPago, String dataDeRegistro) {
     }
 
     public Venda(Pessoa cliente, Pessoa vendedor, double valorASerPago, String dataDeRegistro){
@@ -16,6 +16,8 @@ public class Venda {
         this.valorASerPago = valorASerPago;
         this.dataDeRegistro = dataDeRegistro;
     }
+
+
 
     public Pessoa getCliente() {
         return cliente;

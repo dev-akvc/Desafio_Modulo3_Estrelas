@@ -6,8 +6,10 @@ import java.util.List;
 public class ServicoVenda {
     private static List<Venda> listaVendas = new ArrayList<>();
 
-    public static Venda cadastrarVendas(Pessoa cliente, Pessoa vendedor, double valorASerPago, String dataDeRegistro) throws Exception {
-        Venda venda = new Venda(cliente, vendedor, valorASerPago, dataDeRegistro);
+    public static Venda cadastrarVendas(String cpfCliente, String emailVendedor, double valorASerPago, String dataDeRegistro) throws Exception {
+        cpfCliente = ServicoPessoa.buscarPessoas(TipoPessoa.CLIENTE).getCpf();
+        emailVendedor = ServicoPessoa.buscarPessoas(TipoPessoa.VENDEDOR).getEmail();
+        Venda venda = new Venda(cpfCliente, emailVendedor, valorASerPago, dataDeRegistro);
         listaVendas.add(venda);
         return venda;
     }
@@ -18,7 +20,7 @@ public class ServicoVenda {
         } else {
 
             for (Venda referenciaVenda : listaVendas) {
-                System.out.println("Estão cadstradas " +listaVendas.size() +" vendas\n" +referenciaVenda);
+                System.out.println(referenciaVenda);
             }
         }
     }
